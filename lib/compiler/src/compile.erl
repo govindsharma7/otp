@@ -614,7 +614,8 @@ core_passes() ->
 
 kernel_passes() ->
     %% Destructive setelement/3 optimization and core lint.
-    [?pass(core_dsetel_module),
+    [{iff,clint0,?pass(core_lint_module)},
+     ?pass(core_dsetel_module),
      {iff,dsetel,{listing,"dsetel"}},
 
      {iff,clint,?pass(core_lint_module)},
